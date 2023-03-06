@@ -1,0 +1,39 @@
+/* footer  */
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+    margin-top: 15px;
+    background: linear-gradient( black, grey);
+    border: 1px solid grey;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.social-links{
+    width: 33%;
+}
+
+.dev-social-links{
+    width: 33%;
+}
+
+.copyright{
+    width: 100vw;
+    color: antiquewhite;
+    text-align: center;
+}
+
+footer li{
+    font-size: 1.1rem;
+}
+
+footer li:hover{
+    transform: scale(1.1);
+    transition: all 1s ease-in-out;
+}
