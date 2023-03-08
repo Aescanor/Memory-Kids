@@ -1,23 +1,70 @@
-
 // // I - array of images : 
 
 const animaux = [
-    './public/imges/autruche.png', './public/imges/autruche.png',
-    './public/imges/boa.png', './public/imges/boa.png',
-    './public/imges/crocodile.png', './public/imges/crocodile.png',
-    './public/imges/elephant.png', './public/imges/elephant.png',
-    './public/imges/iguane.png', './public/imges/iguane.png',
-    './public/imges/kangourou.png', './public/imges/kangourou.png',
-    './public/imges/koala.png', './public/imges/koala.png',
-    './public/imges/leopard.png', './public/imges/leopard.png',
-    './public/imges/lion.png', './public/imges/lion.png',
-    './public/imges/ours.png', './public/imges/ours.png',
-    './public/imges/panda.png', './public/imges/panda.png',
-    './public/imges/panthere.png', './public/imges/panthere.png',
-    './public/imges/renard.png', './public/imges/renard.png',
-    './public/imges/rhinoceros.png', './public/imges/rhinoceros.png',
- './public/imges/tigre.png', './public/imges/tigre.png',
- './public/imges/zebre.png', './public/imges/zebre.png',
+    {
+        "name": "autruche",
+        "src": './public/images/animaux/autruche.png'
+    },
+    {
+        "name": "boa",
+        "src": '/public/images/animaux/boa.png'
+    },
+    {
+        "name": "crocodile",
+        "src": './public/images/animaux/crocodile.png'
+    },
+    {
+        "name": "elephant",
+        "src": './public/images/animaux/elephant.png'
+    },
+    {
+        "name": "iguane",
+        "src": './public/images/animaux/iguane.png'
+    },
+    {
+        "name": "kangourou",
+        "src": './public/images/animaux/kangourou.png'
+    },
+    {
+        "name": "koala",
+        "src": './public/images/animaux/koala.png'
+    },
+    {
+        "name": "leopard",
+        "src": './public/images/animaux/leopard.png'
+    },
+    {
+        "name": "lion",
+        "src": './public/images/animaux/lion.png'
+    },
+    {
+        "name": "ours",
+        "src": './public/images/animaux/ours.png'
+    },
+    {
+        "name": "panda",
+        "src": './public/images/animaux/panda.png'
+    },
+    {
+        "name": "panthere",
+        "src": './public/images/animaux/panthere.png'
+    },
+    {
+        "name": "renard",
+        "src": './public/images/animaux/renard.png'
+    },
+    {
+        "name": "rhinoceros",
+        "src": './public/images/animaux/rhinoceros.png'
+    },
+    {
+        "name": "tigre",
+        "src": './public/images/animaux/tigre.png'
+    },
+    {
+        "name": "zebre",
+        "src": './public/images/animaux/zebre.png'
+    },
 ]
 
-export{animaux}
+export { animaux }
