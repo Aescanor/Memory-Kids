@@ -1,15 +1,9 @@
-// Déclaration des variables :
+// déclaration des variables générales :
+const infoParty = document.querySelector(".info-party")
 
-// playerSide :
-const inpPlayerTag = document.querySelector("input#playerTag");
-const btnPlayerTag = document.querySelector("button#btn-playerTag");
+// I - function loaderTheme()
 
-// select theme :
-const selectTheme = document.querySelector("select#theme");
-
-// I - function selectTheme()
-
-// a - création des tableaux :
+// a - arrays :
 
 // I - array of animaux : 
 
@@ -83,7 +77,7 @@ const animaux = [
 // array of fruits : 
 
 const fruits = [
-    
+
     {
         "name": "ananas",
         "src": "./public/images/fruits/ananas.png"
@@ -139,21 +133,44 @@ const fruits = [
 
 ]
 
+// I - selectedTheme(): 
 
-selectTheme.addEventListener("change", (e) =>{
-    const theme = e.target.value;
+const selectTheme = document.querySelector("select#theme");
 
-    console.log(theme)
+selectTheme.addEventListener('change', (e) => {
+    var selectedTheme = selectTheme.value;
+
+    if(selectTheme.value == "animaux"){
+        infoParty.innerHTML = (`🐯 Le thème choissi est les  ${selectedTheme} 🐯`)
+    }else if(selectTheme.value == "fruits"){
+        infoParty.innerHTML = (`🍓 Le thème choissi est les ${selectedTheme} 🥝`)
+    }else if(selectTheme.value == "default"){
+        selectedTheme = null;
+    }
+    
+    loadingTheme()
 })
 
-// function selectTheme(){
+function loadingTheme() {
 
-// }
+    let card;
+
+    if(selectTheme.value == "animaux"){
+        card = animaux;
+        console.log(`Tableau des ${card} animaux`)
+    }else if(selectTheme.value == "fruits"){
+        card = fruits;
+        console.log(`Tableau des ${card} fruits`)
+    }
+
+
+}
+
 
 // II - function shuffle()
 
 
-// - Function createCard()
+// - function createCard()
 
 
 // III - function isPair()
@@ -170,7 +187,33 @@ selectTheme.addEventListener("change", (e) =>{
 // features :
 
 // playerTag :
+const playerTag = document.querySelector("h2.pseudo")
+const inpPlayerTag = document.querySelector("input#playerTag");
 
+
+const btnPlayerTag = document.querySelector("button#btn-playerTag");
+
+btnPlayerTag.addEventListener("click", (e) => {
+
+    checkPlayerTag()
+
+})
+
+
+function checkPlayerTag() {
+
+    const regExp = /[0-9 a-z]{2,}/gi;
+
+    if (inpPlayerTag.match(regExp)) {
+
+        const pseudo = inpPlayerTag.selectedTheme;
+
+        return playerTag.innerHTML = `Bienvenue ${pseudo.charAt(0).toUpperCase()}${pseudo.slice(1)}`
+
+    } else if (inpPlayerTag.selectedTheme !== (regExp)) {
+        alert(`Saisie invalide, veuillez saisir un pseudo comprenant 2 caractères alphanumériques minimum`)
+    }
+}
 
 // toggle rules of game :
 

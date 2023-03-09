@@ -85,11 +85,12 @@
                 <button type="submit" id="btn-playerTag">✅</button>
             </div>
 
-            <form>
-                <label for="theme">Choissis un thème:</label>
+            <form class="select_Theme">
+                <label for="theme"></label>
                 <select name="theme" id="theme">
-                    <option value="animaux">Animaux</option>
-                    <option value="fruits">Fruits</option>
+                    <option class="select-option" value="default" selected>choissis un thème</option>
+                    <option class="select-option" value="animaux">🐯 Animaux 🐯</option>
+                    <option class="select-option" value="fruits">🍓 Fruits 🥝</option>
                 </select>
 
             </form>
@@ -138,4 +139,5 @@
 </body>
 <!-- JAVASCRIPT -->
 <script src="index.js"></script>
+
 </html>
