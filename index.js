@@ -133,44 +133,108 @@ const fruits = [
 
 ]
 
-// I - selectedTheme(): 
+
+// I - selectTheme(): 
 
 const selectTheme = document.querySelector("select#theme");
 
 selectTheme.addEventListener('change', (e) => {
-    var selectedTheme = selectTheme.value;
 
-    if(selectTheme.value == "animaux"){
-        infoParty.innerHTML = (`🐯 Le thème choissi est les  ${selectedTheme} 🐯`)
-    }else if(selectTheme.value == "fruits"){
-        infoParty.innerHTML = (`🍓 Le thème choissi est les ${selectedTheme} 🥝`)
-    }else if(selectTheme.value == "default"){
-        selectedTheme = null;
-    }
-    
+    selectedTheme()
+
     loadingTheme()
 })
 
+// function selectedTheme :
+function selectedTheme() {
+
+    var selectedTheme = selectTheme.value;
+
+    if (selectTheme.value == "animaux") {
+        infoParty.innerHTML = (`🐯 Le thème choissi est les  ${selectedTheme} 🐯`)
+    } else if (selectTheme.value == "fruits") {
+        infoParty.innerHTML = (`🍓 Le thème choissi est les ${selectedTheme} 🥝`)
+    } else if (selectTheme.value == "default") {
+        selectedTheme = null;
+    }
+}
+
+// function loadingTheme :
 function loadingTheme() {
 
-    let card;
+    let cardTheme;
+    let coverCardTheme;
 
-    if(selectTheme.value == "animaux"){
-        card = animaux;
-        console.log(`Tableau des ${card} animaux`)
-    }else if(selectTheme.value == "fruits"){
-        card = fruits;
-        console.log(`Tableau des ${card} fruits`)
+    if (selectTheme.value == "animaux") {
+        cardTheme = animaux;
+        coverCardTheme = "./public/images/animaux/cover.png"
+        createCard()
+
+        console.log(coverCardTheme);
+
+    } else if (selectTheme.value == "fruits") {
+        cardTheme = fruits;
+        coverCardTheme = "./public/images/fruits/cover.png"
+        createCard()
+
+        console.log(coverCardTheme);
+
     }
 
 
+    // - function createCard()
+
+    function createCard() {
+
+        // 1-créer une boucle qui va parcourir le tableau :
+
+        cardTheme.forEach(function createCard() {
+
+            const gamingBoard = document.querySelector(".gaming-board")
+
+            let newFlipCard = document.createElement("div");
+            newFlipCard.classList.add("flip-card");
+
+            let newFlipCardInner = document.createElement("div");
+            newFlipCardInner.classList.add("flip-card-inner");
+
+
+            let newFlipCardFront = document.createElement("div");
+            newFlipCardFront.classList.add("flip-card-front")
+
+            let cover = document.createElement("img")
+            cover.setAttribute('src', coverCardTheme)
+            newFlipCardFront.appendChild(cover);
+            
+            newFlipCard.appendChild(newFlipCardFront)
+
+
+            let newFlipCardBack = document.createElement("div");
+            newFlipCardBack.classList.add("flip-card-back")
+
+
+
+            newFlipCardInner.appendChild(newFlipCardFront)
+            newFlipCardInner.appendChild(newFlipCardBack)
+
+            newFlipCard.appendChild(newFlipCardInner)
+
+            
+            gamingBoard.appendChild(newFlipCard);
+            
+            return newFlipCard;
+
+
+        })
+    }
 }
+
+
 
 
 // II - function shuffle()
 
 
-// - function createCard()
 
 
 // III - function isPair()
@@ -217,4 +281,4 @@ function checkPlayerTag() {
 
 // toggle rules of game :
 
-// toggle footer :
+// toggle footer

@@ -177,8 +177,11 @@ h1{
 }
 
 .flip-card-front{
-    background-color: transparent;
+    background-color: red;
     color: var(--myFontColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flip-card-back{
