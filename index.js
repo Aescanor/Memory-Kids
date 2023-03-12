@@ -159,7 +159,8 @@ function selectedTheme() {
     }
 }
 
-// function loadingTheme :
+
+//II- function loadingTheme :
 function loadingTheme() {
 
     let cardTheme;
@@ -170,72 +171,111 @@ function loadingTheme() {
         coverCardTheme = "./public/images/animaux/cover.png"
         createCard()
 
-        console.log(coverCardTheme);
 
     } else if (selectTheme.value == "fruits") {
         cardTheme = fruits;
         coverCardTheme = "./public/images/fruits/cover.png"
         createCard()
-
-        console.log(coverCardTheme);
-
     }
 
 
-    // - function createCard()
+    // III- function createCard()
 
     function createCard() {
 
+        // feature à prévoir par la suite niveau de difficulté, par défaut 6 cartes :
+        cardTheme.length = 6;
+
         // 1-créer une boucle qui va parcourir le tableau :
-
-        cardTheme.forEach(function createCard() {
-
-            const gamingBoard = document.querySelector(".gaming-board")
-
-            let newFlipCard = document.createElement("div");
-            newFlipCard.classList.add("flip-card");
-
-            let newFlipCardInner = document.createElement("div");
-            newFlipCardInner.classList.add("flip-card-inner");
+        cardTheme.forEach((picture) => {
 
 
-            let newFlipCardFront = document.createElement("div");
-            newFlipCardFront.classList.add("flip-card-front")
+            // création du container flip-card :
+            const newFlipCard = document.createElement("div")
+            newFlipCard.classList.add("flip-card")
 
-            let cover = document.createElement("img")
-            cover.setAttribute('src', coverCardTheme)
-            newFlipCardFront.appendChild(cover);
-            
-            newFlipCard.appendChild(newFlipCardFront)
-
-
-            let newFlipCardBack = document.createElement("div");
-            newFlipCardBack.classList.add("flip-card-back")
-
-
-
-            newFlipCardInner.appendChild(newFlipCardFront)
-            newFlipCardInner.appendChild(newFlipCardBack)
+            // création du container flip-card-inner qui contient front et back :
+            const newFlipCardInner = document.createElement("div")
+            newFlipCardInner.classList.add("flip-card-inner")
 
             newFlipCard.appendChild(newFlipCardInner)
 
-            
-            gamingBoard.appendChild(newFlipCard);
-            
-            return newFlipCard;
+            // création du front qui contient le coverCardTheme :
+            const newFlipCardFront = document.createElement("div")
+            newFlipCardFront.classList.add("flip-card-front")
 
+            newFlipCardInner.appendChild(newFlipCardFront)
 
+            const imgCover = document.createElement("img")
+            imgCover.setAttribute("src", coverCardTheme)
+
+            newFlipCardFront.appendChild(imgCover)
+
+            // création du back qui contient les images du thème sélectionné :
+            const newFlipCardBack = document.createElement("div")
+            newFlipCardBack.classList.add("flip-card-back")
+
+            newFlipCardInner.appendChild(newFlipCardBack);
+
+            // création de l'image :
+            const image = document.createElement("img")
+            image.src = picture.src;
+            image.alt = picture.name;
+            image.title = picture.name;
+            image.style.width = "155px"
+            image.style.height = "200px"
+
+            // intégration de l'image à back :
+            newFlipCardBack.appendChild(image)
+
+            // déclaration de la variable first block qui contient les originals cards :
+            const gamingBoardFirstBlock = document.querySelector(".first_block");
+
+            // intégration des originals cards à gamingBoardFirstBlock :
+            gamingBoardFirstBlock.appendChild(newFlipCard)
+
+            // création du tableau dans lequel on stocke les copies des originals cards :
+            let clonedCards = [];
+
+            // stockage des originals cards :
+            clonedCards.push(newFlipCard);
+
+            
+            // appel de la fonction cloneCard :
+            clonedCard()
+
+            return
+            
+            // IV  - cloneCard :
+            function clonedCard() {
+                
+                // IV - 1 mélange des cartes pour un ordre aléatoire :
+                
+                console.log(`Tab ${clonedCards}`);
+    
+                for (let i = 0; i < clonedCards.length; i++) {
+                    
+                    const card = clonedCards[i].cloneNode(true)
+                    console.log(card)
+                    card.classList.add("newFlipCardInner")
+                    card.removeAttribute("data-name")
+                    
+                    const gamingBoardSecondBlock = document.querySelector(".second_block")
+                    gamingBoardSecondBlock.appendChild(card)
+                }
+                
+            }
+            
         })
+
     }
+
+
+
 }
 
 
-
-
 // II - function shuffle()
-
-
-
 
 // III - function isPair()
 
@@ -264,6 +304,7 @@ btnPlayerTag.addEventListener("click", (e) => {
 })
 
 
+
 function checkPlayerTag() {
 
     const regExp = /[0-9 a-z]{2,}/gi;
@@ -277,8 +318,8 @@ function checkPlayerTag() {
     } else if (inpPlayerTag.selectedTheme !== (regExp)) {
         alert(`Saisie invalide, veuillez saisir un pseudo comprenant 2 caractères alphanumériques minimum`)
     }
+
+    // toggle rules of game :
+
+    // toggle footer
 }
-
-// toggle rules of game :
-
-// toggle footer

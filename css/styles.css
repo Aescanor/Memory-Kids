@@ -140,8 +140,26 @@ h1{
     margin: auto;
     display: flex;
     flex-flow: row wrap;
-    /* background: red; */
+    background: violet;
 }
+
+.gaming-board .first_block, .gaming-board .second_block{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-flow: row;
+}
+
+
+.first_block{
+    /* background: violet; */
+}
+
+.second_block{
+    /* background: darkcyan; */
+}
+
+
 
 /* flip-card  */
 .flip-card {
@@ -149,8 +167,7 @@ h1{
     width: 155px;
     height: 200px;
     margin: auto;
-    border: 1px solid var(--myFontColor);
-    border-radius: 5px;
+    
     perspective: 1000px;
 }
 
@@ -158,6 +175,7 @@ h1{
     position: relative;
     width: 100%;
     height: 100%;
+    border: 1px solid var(--myFontColor);
     border-radius: 5px;
     text-align: center;
     transition: transform 0.8s;
@@ -174,14 +192,15 @@ h1{
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .flip-card-front{
     background-color: red;
     color: var(--myFontColor);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 
 .flip-card-back{
