@@ -133,7 +133,6 @@ const fruits = [
 
 ]
 
-
 // I - selectTheme(): 
 
 const selectTheme = document.querySelector("select#theme");
@@ -148,7 +147,7 @@ selectTheme.addEventListener('change', (e) => {
 // function selectedTheme :
 function selectedTheme() {
 
-    var selectedTheme = selectTheme.value;
+    let selectedTheme = selectTheme.value;
 
     if (selectTheme.value == "animaux") {
         infoParty.innerHTML = (`🐯 Le thème choissi est les  ${selectedTheme} 🐯`)
@@ -159,7 +158,6 @@ function selectedTheme() {
     }
 }
 
-
 //II- function loadingTheme :
 function loadingTheme() {
 
@@ -169,15 +167,26 @@ function loadingTheme() {
     if (selectTheme.value == "animaux") {
         cardTheme = animaux;
         coverCardTheme = "./public/images/animaux/cover.png"
+        shuffleCards()
         createCard()
 
 
     } else if (selectTheme.value == "fruits") {
         cardTheme = fruits;
         coverCardTheme = "./public/images/fruits/cover.png"
+        shuffleCards()
         createCard()
     }
 
+    // shuffle cards: 
+    function shuffleCards(array) {
+
+        for (let i = cardTheme.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+
+            [cardTheme[i], cardTheme[j]] = [cardTheme[j], cardTheme[i]];
+        }
+    }
 
     // III- function createCard()
 
@@ -236,50 +245,86 @@ function loadingTheme() {
 
             // création du tableau dans lequel on stocke les copies des originals cards :
             let clonedCards = [];
+            // console.log(clonedCards);
 
             // stockage des originals cards :
             clonedCards.push(newFlipCard);
 
-            
             // appel de la fonction cloneCard :
             clonedCard()
 
             return
-            
+
             // IV  - cloneCard :
             function clonedCard() {
-                
-                // IV - 1 mélange des cartes pour un ordre aléatoire :
-                
-                console.log(`Tab ${clonedCards}`);
-    
+
                 for (let i = 0; i < clonedCards.length; i++) {
-                    
+
                     const card = clonedCards[i].cloneNode(true)
-                    console.log(card)
                     card.classList.add("newFlipCardInner")
                     card.removeAttribute("data-name")
-                    
+
                     const gamingBoardSecondBlock = document.querySelector(".second_block")
                     gamingBoardSecondBlock.appendChild(card)
+
                 }
-                
-            }
+            }// clonedCards 
+            
+
+        }) //forEach
+
+        
+    } // createdCard 
+}//loadingTheme
+
+// VI - Active cards : 
+
+    const allCards = document.querySelectorAll(".flip-card")
+    
+    let activeCards = [];
+    
+    allCards.forEach(card => {
+        
+        card.addEventListener("click", () => {
+            
+            card.classList.add("activeCard");
+            
+            activeCards.push(card)
+            
+            console.log(`active card`);
             
         })
-
-    }
-
-
-
-}
-
-
-// II - function shuffle()
-
+        
+    })
+    
 // III - function isPair()
 
+// cardOne = ... ;
+// cardTwo = ...;
+
+// const playerScore = document.querySelector(".player-score")
+
+// if(cardOne.title === cadTwo.title){
+
+//     infoParty.innerHTML `Bravo, tu as trouvé une paire`;
+//     playerScore.innerHTML += 1;
+//     winnerIs()
+
+// }else if(cardOne != cardTwo){
+
+//     infoParty.innerHTML `Perdu, tu n'as trouvé la bonne paire`;
+//     playerScore.innerHTML += 0;
+//     winnerIs()
+// }
+
 // IV - function IncrementScore() :
+
+// function winnerIs(){
+
+
+
+
+// }
 
 // V - function disabled card() :
 

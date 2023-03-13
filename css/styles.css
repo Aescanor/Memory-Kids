@@ -140,7 +140,6 @@ h1{
     margin: auto;
     display: flex;
     flex-flow: row wrap;
-    background: violet;
 }
 
 .gaming-board .first_block, .gaming-board .second_block{
@@ -184,7 +183,13 @@ h1{
 
 .flip-card:hover .flip-card-inner{
     transform: rotateY(180deg);
+    cursor: pointer;
 }
+
+/* .active{
+    transform: rotateY(180deg);
+    cursor: pointer;
+} */
 
 .flip-card-front, .flip-card-back{
     position: absolute;
@@ -198,13 +203,13 @@ h1{
 }
 
 .flip-card-front{
-    background-color: red;
+    background-color: green;
     color: var(--myFontColor);
     
 }
 
 .flip-card-back{
-    background-color: var(--primaryThemeColor);
+    background-color: #ffffff;
     color: var(--myFontColor);
     transform: rotateY(180deg);
 }
